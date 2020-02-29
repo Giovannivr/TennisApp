@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpelersToernooien{% endblock %}
+
+{% block body %}
+    <h1>SpelersToernooien</h1>
+
+    <table class="table" style="color: white">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ spelers_toernooien.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('spelers_toernooien_index') }}">back to list</a>
+
+    <a href="{{ path('spelers_toernooien_edit', {'id': spelers_toernooien.id}) }}">edit</a>
+
+    {{ include('spelers_toernooien/_delete_form.html.twig') }}
+{% endblock %}

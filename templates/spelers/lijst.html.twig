@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spelers lijst{% endblock %}
+
+{% block body %}
+    <h1>Lijst Spelers {{ toernooi[0].naam }} </h1>
+
+    <table class="table" style="color: white">
+        <thead>
+            <tr>
+                <th>Voornaam</th>
+                <th>Tussenvoegsel</th>
+                <th>Achternaam</th>
+                {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_MEDEWERKER')) %}
+                  <th>actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for speler in spelers %}
+            <tr style="color: white">
+                <td>{{ speler.voornaam }}</td>
+                <td>{{ speler.tussenvoegsel }}</td>
+                <td>{{ speler.achternaam }}</td>
+                {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_MEDEWERKER')) %}
+                    <td>
+                        <a href="{{ path('spelers_delete', {'id': speler.id}) }}">verwijder</a>
+                    </td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

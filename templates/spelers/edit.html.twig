@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Spelers{% endblock %}
+
+{% block body %}
+    <h1>Edit Spelers</h1>
+
+    {{ include('spelers/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('spelers_index') }}">back to list</a>
+
+    {{ include('spelers/_delete_form.html.twig') }}
+{% endblock %}

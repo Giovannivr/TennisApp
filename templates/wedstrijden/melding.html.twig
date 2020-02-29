@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Melding{% endblock %}
+
+{% block body %}
+    <h1>Melding</h1>
+
+    {%  if melding == 1 %}
+        <h3>Wedstrijden zijn al aangemaakt klik op Verwerk Gegevens</h3>
+        <a class="btn btn-success" href="{{ path('toernooien_index2') }}">OK</a>
+    {% endif %}
+
+    {%  if melding == 2 %}
+        <h3>De wedstrijden zijn aangemaakt ga verder met Verwerk gegevens</h3>
+        <a class="btn btn-success" href="{{ path('toernooien_index2') }}">OK</a>
+    {% endif %}
+
+    {%  if melding == 3 %}
+        <h3>De wedstrijden uit deze ronden hebben nog niet allemaal een winnaar voer eerst check ronde uit</h3>
+        <a class="btn btn-success" href="{{ path('toernooien_index2') }}">OK</a>
+    {% endif %}
+
+ {% endblock %}

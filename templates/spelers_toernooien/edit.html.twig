@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit SpelersToernooien{% endblock %}
+
+{% block body %}
+    <h1>Edit SpelersToernooien</h1>
+
+    {{ include('spelers_toernooien/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('spelers_toernooien_index') }}">back to list</a>
+
+    {{ include('spelers_toernooien/_delete_form.html.twig') }}
+{% endblock %}

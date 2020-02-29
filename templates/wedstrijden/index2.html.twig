@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actueel Uitslagen Overzicht{% endblock %}
+
+{% block body %}
+    <h1>Actueel Uitslagen Overzicht</h1>
+
+    <table class="table" style="color: white">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Toernooi</th>
+                <th>Ronde</th>
+                <th>Wedstrijd</th>
+                <th>Score1</th>
+                <th>Score2</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for wedstrijden in wedstrijdens %}
+            <tr style="color: white">
+                <td>{{ wedstrijden.id }}</td>
+                <td>{{ wedstrijden.toernooiId }}</td>
+                <td>{{ wedstrijden.ronde }}</td>
+                <td>{{ wedstrijden.speler1Id }} {{ "-vs- " }}{{ wedstrijden.speler2Id }}</td>
+                <td>{{ wedstrijden.score1 }}</td>
+                <td>{{ wedstrijden.score2 }}</td>
+
+                {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_MEDEWERKER')) %}
+                <td>
+                    <a class="btn btn-danger" href="{{ path('wedstrijden_edit', {'id': wedstrijden.id}) }}">Voer uitslag in</a>
+                </td>
+                {% endif %}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Geen records gevonden voor verwerking</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ {% endblock %}

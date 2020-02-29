@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}SpelersToernooien index{% endblock %}
+
+{% block body %}
+    <h1>SpelersToernooien index</h1>
+
+    <table class="table" style="color: white">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for spelers_toernooien in spelers_toernooiens %}
+            <tr style="color: white">
+                <td>{{ spelers_toernooien.id }}</td>
+                <td>
+                    <a href="{{ path('spelers_toernooien_show', {'id': spelers_toernooien.id}) }}">show</a>
+                    <a href="{{ path('spelers_toernooien_edit', {'id': spelers_toernooien.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr style="color: white">
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('spelers_toernooien_new') }}">Create new</a>
+{% endblock %}

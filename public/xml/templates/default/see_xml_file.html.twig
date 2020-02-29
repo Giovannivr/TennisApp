@@ -1,0 +1,35 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Show XML input{% endblock %}
+
+{% block body %}
+    <a class="btn btn-primary" href="{{ path('file_spelers_toevoegen_db') }}">Spelers Aanmelden</a>
+    <a class="btn btn-danger" href="{{ path('homepage') }}">Annuleer</a>
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Voornaam</th>
+                <th>Tussenvoegsel</th>
+                <th>Achternaam</th>
+                <th>School</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for data in xml %}
+                <tr>
+                    <td>{{ data.voornaam }}</td>
+                    <td>{{ data.tussenvoegsel }}</td>
+                    <td>{{ data.achternaam }}</td>
+                    <td>{{ data.school }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

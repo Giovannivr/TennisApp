@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New SpelersToernooien{% endblock %}
+
+{% block body %}
+    <h1>Create new SpelersToernooien</h1>
+
+    {{ include('spelers_toernooien/_form.html.twig') }}
+
+    <a href="{{ path('spelers_toernooien_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toernooien index{% endblock %}
+
+{% block body %}
+    <h1>Toernooien index</h1>
+
+    <table class="table" style="color: white">
+        <thead>
+            <tr>
+                <th>Naam</th>
+                <th>Datum</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for toernooien in toernooiens %}
+            <tr style="color: white">
+                <td>{{ toernooien.naam }}</td>
+                <td>{{ toernooien.datum ? toernooien.datum|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('spelers_new2', {'id': toernooien.id}) }}">Aanmelden</a>
+                    <a class="btn btn-success" href="{{ path('spelers_lijst', {'id': toernooien.id}) }}">Spelers aangemeld</a>
+                    <a class="btn btn-success" href="{{ path('uitslagen_toernooi', {'id': toernooien.id}) }}">Uitslagen</a>
+                    {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_MEDEWERKER')) %}
+                         <a class="btn btn-danger" href="{{ path('maak_wedstrijd', {'id': toernooien.id}) }}">Maak wedstrijden aan</a>
+                         <a class="btn btn-danger" href="{{ path('verwerk_gegevens', {'id': toernooien.id}) }}">Verwerk gegevens</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

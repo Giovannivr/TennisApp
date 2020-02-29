@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Wedstrijden{% endblock %}
+
+{% block body %}
+    <h1>Edit Wedstrijden</h1>
+
+    {{ include('wedstrijden/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('wedstrijden_index') }}">back to list</a>
+
+    {{ include('wedstrijden/_delete_form.html.twig') }}
+{% endblock %}
